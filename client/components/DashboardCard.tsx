@@ -11,7 +11,7 @@ export default function DashboardCard({ icon, title, description }: DashboardCar
     <div className="w-full h-auto md:h-[285px] bg-white border-2 border-schedsync-gray-4 rounded-[20px] md:rounded-[30px] p-4 md:p-6 flex flex-col md:flex-row">
       {/* Icon */}
       <div className="flex-shrink-0 mb-4 md:mb-0 md:mr-6 flex justify-center md:justify-start">
-        <div className="w-[80px] md:w-[120px] h-[80px] md:h-[120px] flex items-center justify-center">
+        <div className="w-[60px] md:w-[120px] h-[60px] md:h-[120px] flex items-center justify-center">
           {icon}
         </div>
       </div>
