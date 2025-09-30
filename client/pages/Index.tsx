@@ -6,32 +6,32 @@ import DashboardCard from "../components/DashboardCard";
 export default function Index() {
   const dashboardItems = [
     {
-      icon: <Calendar className="w-[120px] h-[120px] text-black stroke-[4]" />,
+      icon: <Calendar className="w-[60px] md:w-[120px] h-[60px] md:h-[120px] text-black stroke-[4]" />,
       title: "New Schedule",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      icon: <CalendarCheck className="w-[120px] h-[120px] text-black stroke-[4] fill-black" />,
+      icon: <CalendarCheck className="w-[60px] md:w-[120px] h-[60px] md:h-[120px] text-black stroke-[4] fill-black" />,
       title: "My Schedule",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      icon: <Users className="w-[120px] h-[120px] text-black stroke-[4]" />,
+      icon: <Users className="w-[60px] md:w-[120px] h-[60px] md:h-[120px] text-black stroke-[4]" />,
       title: "Faculty",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      icon: <Image className="w-[120px] h-[120px] text-black stroke-[4]" />,
+      icon: <Image className="w-[60px] md:w-[120px] h-[60px] md:h-[120px] text-black stroke-[4]" />,
       title: "Campus",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      icon: <Map className="w-[120px] h-[120px] text-black stroke-[4]" />,
+      icon: <Map className="w-[60px] md:w-[120px] h-[60px] md:h-[120px] text-black stroke-[4]" />,
       title: "Map",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      icon: <MoreHorizontal className="w-[120px] h-[120px] text-black stroke-[4]" />,
+      icon: <MoreHorizontal className="w-[60px] md:w-[120px] h-[60px] md:h-[120px] text-black stroke-[4]" />,
       title: "Others",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     }
@@ -61,8 +61,8 @@ export default function Index() {
       </main>
       
       {/* Help Button */}
-      <button className="fixed bottom-8 right-8 w-[60px] h-[60px] bg-schedsync-blue border-2 border-black rounded-full flex items-center justify-center z-10">
-        <span className="text-black font-inter font-bold text-4xl">?</span>
+      <button className="fixed bottom-4 md:bottom-8 right-4 md:right-8 w-[50px] md:w-[60px] h-[50px] md:h-[60px] bg-schedsync-blue border-2 border-black rounded-full flex items-center justify-center z-10">
+        <span className="text-black font-inter font-bold text-2xl md:text-4xl">?</span>
       </button>
     </div>
   );
