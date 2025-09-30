@@ -46,9 +46,9 @@ export default function Index() {
       <Sidebar />
       
       {/* Main Content */}
-      <main className="pt-4 pl-32 pr-8 pb-8">
+      <main className="pt-4 pl-8 md:pl-32 pr-8 pb-8">
         {/* Dashboard Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[1300px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 max-w-[1300px] mx-auto">
           {dashboardItems.map((item, index) => (
             <DashboardCard
               key={index}
