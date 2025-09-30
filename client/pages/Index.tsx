@@ -6,32 +6,32 @@ import DashboardCard from "../components/DashboardCard";
 export default function Index() {
   const dashboardItems = [
     {
-      icon: <Calendar className="w-[200px] h-[200px] text-black stroke-[4]" />,
+      icon: <Calendar className="w-[120px] h-[120px] text-black stroke-[4]" />,
       title: "New Schedule",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      icon: <CalendarCheck className="w-[200px] h-[200px] text-black stroke-[4] fill-black" />,
-      title: "My Schedule", 
+      icon: <CalendarCheck className="w-[120px] h-[120px] text-black stroke-[4] fill-black" />,
+      title: "My Schedule",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      icon: <Users className="w-[200px] h-[200px] text-black stroke-[4]" />,
+      icon: <Users className="w-[120px] h-[120px] text-black stroke-[4]" />,
       title: "Faculty",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      icon: <Image className="w-[200px] h-[200px] text-black stroke-[4]" />,
+      icon: <Image className="w-[120px] h-[120px] text-black stroke-[4]" />,
       title: "Campus",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      icon: <Map className="w-[200px] h-[200px] text-black stroke-[4]" />,
+      icon: <Map className="w-[120px] h-[120px] text-black stroke-[4]" />,
       title: "Map",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      icon: <MoreHorizontal className="w-[200px] h-[200px] text-black stroke-[4]" />,
+      icon: <MoreHorizontal className="w-[120px] h-[120px] text-black stroke-[4]" />,
       title: "Others",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     }
@@ -48,7 +48,7 @@ export default function Index() {
       {/* Main Content */}
       <main className="pt-4 pl-32 pr-8 pb-8">
         {/* Dashboard Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1200px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[1300px] mx-auto">
           {dashboardItems.map((item, index) => (
             <DashboardCard
               key={index}
