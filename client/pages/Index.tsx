@@ -2,6 +2,7 @@ import { Calendar, CalendarCheck, Users, Image, Map, MoreHorizontal } from "luci
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import DashboardCard from "../components/DashboardCard";
+import { Link } from "react-router-dom";
 
 export default function Index() {
   const dashboardItems = [
