@@ -14,6 +14,11 @@ export default {
     },
     extend: {
       colors: {
+        // SchedSync Design Colors
+        'schedsync-gray-4': '#D1D1D6',
+        'schedsync-gray-5': '#E5E5EA',
+        'schedsync-gray-2': '#AEAEB2',
+        'schedsync-blue': '#87CEEB',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
