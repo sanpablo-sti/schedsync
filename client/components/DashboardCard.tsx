@@ -8,7 +8,7 @@ interface DashboardCardProps {
 
 export default function DashboardCard({ icon, title, description }: DashboardCardProps) {
   return (
-    <div className="w-full h-auto md:h-[285px] bg-white/30 backdrop-blur-sm border border-white/20 rounded-[20px] md:rounded-[30px] p-4 md:p-6 flex flex-col md:flex-row transition-transform transform hover:-translate-y-1 hover:scale-[1.01] hover:shadow-2xl hover:bg-white/40 hover:backdrop-blur-md cursor-pointer">
+    <div className="w-full h-auto md:h-[285px] bg-white/30 backdrop-blur-sm border border-white/20 ring-1 ring-black/10 rounded-[20px] md:rounded-[30px] p-4 md:p-6 flex flex-col md:flex-row transition-transform transform hover:-translate-y-1 hover:scale-[1.01] hover:shadow-2xl hover:bg-white/40 hover:backdrop-blur-md cursor-pointer">
       {/* Icon */}
       <div className="flex-shrink-0 mb-4 md:mb-0 md:mr-6 flex justify-center md:justify-start">
         <div className="w-[60px] md:w-[120px] h-[60px] md:h-[120px] flex items-center justify-center">
