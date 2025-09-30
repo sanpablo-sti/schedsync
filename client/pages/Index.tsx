@@ -52,13 +52,13 @@ export default function Index() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 max-w-[1300px] mx-auto">
           {dashboardItems.map((item, index) => (
             item.title === 'New Schedule' ? (
-              <a key={index} href="/new-schedule" className="block">
+              <Link key={index} to="/new-schedule" className="block">
                 <DashboardCard
                   icon={item.icon}
                   title={item.title}
                   description={item.description}
                 />
-              </a>
+              </Link>
             ) : (
               <DashboardCard
                 key={index}
