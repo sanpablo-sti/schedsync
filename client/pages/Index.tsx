@@ -6,32 +6,32 @@ import DashboardCard from "../components/DashboardCard";
 export default function Index() {
   const dashboardItems = [
     {
-      icon: <Calendar className="w-[60px] md:w-[120px] h-[60px] md:h-[120px] text-black stroke-[4]" />,
+      icon: <Calendar className="w-[60px] md:w-[120px] h-[60px] md:h-[120px] text-black stroke-[2]" />,
       title: "New Schedule",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      icon: <CalendarCheck className="w-[60px] md:w-[120px] h-[60px] md:h-[120px] text-black stroke-[4] fill-black" />,
+      icon: <CalendarCheck className="w-[60px] md:w-[120px] h-[60px] md:h-[120px] text-black stroke-[2] fill-black" />,
       title: "My Schedule",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      icon: <Users className="w-[60px] md:w-[120px] h-[60px] md:h-[120px] text-black stroke-[4]" />,
+      icon: <Users className="w-[60px] md:w-[120px] h-[60px] md:h-[120px] text-black stroke-[2]" />,
       title: "Faculty",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      icon: <Image className="w-[60px] md:w-[120px] h-[60px] md:h-[120px] text-black stroke-[4]" />,
+      icon: <Image className="w-[60px] md:w-[120px] h-[60px] md:h-[120px] text-black stroke-[2]" />,
       title: "Campus",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      icon: <Map className="w-[60px] md:w-[120px] h-[60px] md:h-[120px] text-black stroke-[4]" />,
+      icon: <Map className="w-[60px] md:w-[120px] h-[60px] md:h-[120px] text-black stroke-[2]" />,
       title: "Map",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
-      icon: <MoreHorizontal className="w-[60px] md:w-[120px] h-[60px] md:h-[120px] text-black stroke-[4]" />,
+      icon: <MoreHorizontal className="w-[60px] md:w-[120px] h-[60px] md:h-[120px] text-black stroke-[2]" />,
       title: "Others",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     }
