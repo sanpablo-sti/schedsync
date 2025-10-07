@@ -50,24 +50,37 @@ export default function Index() {
       <main className="pt-4 pl-8 md:pl-32 pr-8 pb-8">
         {/* Dashboard Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 max-w-[1300px] mx-auto">
-          {dashboardItems.map((item, index) => (
-            item.title === 'New Schedule' ? (
-              <Link key={index} to="/new-schedule" className="block">
-                <DashboardCard
-                  icon={item.icon}
-                  title={item.title}
-                  description={item.description}
-                />
-              </Link>
-            ) : (
+          {dashboardItems.map((item, index) => {
+            if (item.title === 'New Schedule') {
+              return (
+                <Link key={index} to="/new-schedule" className="block">
+                  <DashboardCard
+                    icon={item.icon}
+                    title={item.title}
+                    description={item.description}
+                  />
+                </Link>
+              );
+            } else if (item.title === 'My Schedule') {
+              return (
+                <Link key={index} to="/my-schedules" className="block">
+                  <DashboardCard
+                    icon={item.icon}
+                    title={item.title}
+                    description={item.description}
+                  />
+                </Link>
+              );
+            }
+            return (
               <DashboardCard
                 key={index}
                 icon={item.icon}
                 title={item.title}
                 description={item.description}
               />
-            )
-          ))}
+            );
+          })}
         </div>
       </main>
       
