@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Trash2, Plus } from "lucide-react";
 
 export default function NewSchedule() {
+  const navigate = useNavigate();
   const [scheduleName, setScheduleName] = useState("");
   const [timeDuration, setTimeDuration] = useState("");
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
@@ -110,8 +111,11 @@ export default function NewSchedule() {
               </div>
 
               <div className="flex justify-center pt-8">
-                <button className="px-20 py-4 bg-[#D9D9D9] border border-black font-['Comic_Neue'] text-xl hover:bg-gray-300 transition-colors">
-                  EDIT
+                <button
+                  onClick={() => navigate('/edit-schedule')}
+                  className="px-20 py-4 bg-[#D9D9D9] border border-black font-['Comic_Neue'] text-xl hover:bg-gray-300 transition-colors"
+                >
+                  PROCEED
                 </button>
               </div>
             </div>
