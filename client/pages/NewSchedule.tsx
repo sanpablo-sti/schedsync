@@ -8,13 +8,66 @@ export default function NewSchedule() {
   const [copied, setCopied] = useState(false);
 
   const copy = async () => {
+    // Try modern Clipboard API first
     try {
-      await navigator.clipboard.writeText(command);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(command);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+        return;
+      }
     } catch (e) {
-      console.error("Copy failed", e);
+      console.warn("navigator.clipboard.writeText failed:", e);
     }
+
+    // Fallback to execCommand copy (works on user gesture in many browsers)
+    try {
+      const textarea = document.createElement("textarea");
+      textarea.value = command;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "absolute";
+      textarea.style.left = "-9999px";
+      document.body.appendChild(textarea);
+
+      const selection = document.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(textarea);
+      selection?.removeAllRanges();
+      selection?.addRange(range);
+
+      const successful = document.execCommand("copy");
+      selection?.removeAllRanges();
+      document.body.removeChild(textarea);
+
+      if (successful) {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+        return;
+      }
+    } catch (e) {
+      console.warn("execCommand copy fallback failed:", e);
+    }
+
+    // Final fallback: instruct user to copy manually
+    // Select the pre element so user can press Ctrl/Cmd+C
+    try {
+      const pre = document.querySelector("pre");
+      if (pre) {
+        const range = document.createRange();
+        range.selectNodeContents(pre);
+        const sel = document.getSelection();
+        sel?.removeAllRanges();
+        sel?.addRange(range);
+      }
+    } catch (e) {
+      /* ignore */
+    }
+
+    // Notify user
+    // eslint-disable-next-line no-alert
+    alert(
+      "Unable to copy to clipboard due to browser permissions. Please select the command text and copy it manually (Ctrl/Cmd+C)."
+    );
   };
 
   return (
