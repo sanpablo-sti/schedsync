@@ -2,120 +2,150 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Trash2, Plus } from "lucide-react";
 
 export default function NewSchedule() {
-  const command = `npx "@builder.io/dev-tools@latest" code  --url vcp://quickcopy/vcp-470dd34acc314a2097776880bd524c94 --spaceId afc4f2c9e97d4cd68f06669c3d94c581`;
-  const [copied, setCopied] = useState(false);
+  const [scheduleName, setScheduleName] = useState("");
+  const [timeDuration, setTimeDuration] = useState("");
+  const [selectedDays, setSelectedDays] = useState<string[]>([]);
+  const [sections, setSections] = useState<string[]>(["Section 1", "Section 2"]);
 
-  const copy = async () => {
-    // Try modern Clipboard API first
-    try {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        await navigator.clipboard.writeText(command);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-        return;
-      }
-    } catch (e) {
-      console.warn("navigator.clipboard.writeText failed:", e);
-    }
+  const weekDays = [
+    ["Monday", "Tuesday", "Wednesday"],
+    ["Thursday", "Friday", "Saturday", "Sunday"]
+  ];
 
-    // Fallback to execCommand copy (works on user gesture in many browsers)
-    try {
-      const textarea = document.createElement("textarea");
-      textarea.value = command;
-      textarea.setAttribute("readonly", "");
-      textarea.style.position = "absolute";
-      textarea.style.left = "-9999px";
-      document.body.appendChild(textarea);
-
-      const selection = document.getSelection();
-      const range = document.createRange();
-      range.selectNodeContents(textarea);
-      selection?.removeAllRanges();
-      selection?.addRange(range);
-
-      const successful = document.execCommand("copy");
-      selection?.removeAllRanges();
-      document.body.removeChild(textarea);
-
-      if (successful) {
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-        return;
-      }
-    } catch (e) {
-      console.warn("execCommand copy fallback failed:", e);
-    }
-
-    // Final fallback: instruct user to copy manually
-    // Select the pre element so user can press Ctrl/Cmd+C
-    try {
-      const pre = document.querySelector("pre");
-      if (pre) {
-        const range = document.createRange();
-        range.selectNodeContents(pre);
-        const sel = document.getSelection();
-        sel?.removeAllRanges();
-        sel?.addRange(range);
-      }
-    } catch (e) {
-      /* ignore */
-    }
-
-    // Notify user
-    // eslint-disable-next-line no-alert
-    alert(
-      "Unable to copy to clipboard due to browser permissions. Please select the command text and copy it manually (Ctrl/Cmd+C)."
+  const toggleDay = (day: string) => {
+    setSelectedDays(prev => 
+      prev.includes(day) 
+        ? prev.filter(d => d !== day)
+        : [...prev, day]
     );
   };
 
+  const addSection = () => {
+    const newSectionNum = sections.length + 1;
+    setSections([...sections, `Section ${newSectionNum}`]);
+  };
+
+  const deleteSection = (index: number) => {
+    setSections(sections.filter((_, i) => i !== index));
+  };
+
   return (
-    <div className="min-h-[736px] bg-white relative flex flex-col">
+    <div className="min-h-screen bg-white relative flex flex-col">
       <Header />
       <Sidebar />
 
-      <main className="pt-4 pl-8 md:pl-32 pr-8 pb-8 flex-1">
-        <div className="max-w-4xl mx-auto">
-          <Link to="/" className="inline-block mb-6 text-sm text-slate-600 underline">
-            ← Back
+      <main className="pt-8 pl-8 md:pl-32 pr-8 pb-8 flex-1">
+        <div className="max-w-7xl mx-auto">
+          <Link to="/" className="inline-flex items-center gap-2 mb-8 text-black hover:opacity-70 transition-opacity">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M30 36L18 24L30 12" stroke="#1E1E1E" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </Link>
 
-          <h2 className="text-3xl font-bold mb-4">Create New Schedule</h2>
-          <p className="text-base text-slate-700 mb-6">
-            This is the New Schedule page. Build the scheduling form or workflow here.
-          </p>
+          <h1 className="text-4xl font-bold text-center mb-12">New Schedule</h1>
 
-          <div className="bg-white/40 backdrop-blur-sm border border-white/20 rounded-lg p-6 mb-6">
-            <p className="text-sm text-slate-600 mb-4">To import the Builder content for this page, run the following command in your terminal on your machine (not in the browser):</p>
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8">
+            <div className="space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-xl font-bold mb-3">Schedule Name</label>
+                  <input
+                    type="text"
+                    value={scheduleName}
+                    onChange={(e) => setScheduleName(e.target.value)}
+                    placeholder="Name"
+                    className="w-full px-4 py-4 rounded-lg border-2 border-black text-xl placeholder:text-[#8E8E93]"
+                  />
+                </div>
 
-            <div className="flex items-start gap-4">
-              <pre className="flex-1 overflow-x-auto bg-black/80 text-white text-sm p-4 rounded-md">{command}</pre>
-              <div className="flex flex-col gap-2">
-                <button
-                  onClick={copy}
-                  className="px-3 py-2 bg-white text-sm rounded-md border hover:bg-slate-100"
-                >
-                  Copy
+                <div>
+                  <label className="block text-xl font-bold mb-3">Time Duration</label>
+                  <input
+                    type="text"
+                    value={timeDuration}
+                    onChange={(e) => setTimeDuration(e.target.value)}
+                    placeholder="7:00 - 19:00"
+                    className="w-full px-4 py-4 rounded-lg border-2 border-black text-xl placeholder:text-[#8E8E93]"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-xl font-bold mb-4">Schedule Days Configuration</h2>
+                
+                <div className="space-y-4">
+                  {weekDays.map((row, rowIndex) => (
+                    <div 
+                      key={rowIndex}
+                      className="flex gap-0 rounded-lg border-2 border-black overflow-hidden"
+                    >
+                      {row.map((day, dayIndex) => (
+                        <button
+                          key={day}
+                          onClick={() => toggleDay(day)}
+                          className={`flex-1 py-6 text-xl font-bold border-black transition-colors ${
+                            dayIndex !== 0 ? 'border-l-2' : ''
+                          } ${
+                            selectedDays.includes(day) 
+                              ? 'bg-black text-white' 
+                              : 'bg-white text-black hover:bg-gray-100'
+                          }`}
+                        >
+                          {day}
+                        </button>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6">
+                  <h3 className="text-xl font-bold">School Days:</h3>
+                  <p className="text-[#8E8E93]">
+                    {selectedDays.length > 0 ? selectedDays.join(", ") : "(Days Selected)"}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex justify-center pt-8">
+                <button className="px-20 py-4 bg-[#D9D9D9] border border-black font-['Comic_Neue'] text-xl hover:bg-gray-300 transition-colors">
+                  EDIT
                 </button>
-                <a
-                  href="https://www.builder.io/c/docs/projects-local-repo"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="px-3 py-2 text-sm rounded-md border bg-white hover:bg-slate-100 text-center"
-                >
-                  Docs
-                </a>
               </div>
             </div>
 
-            {copied && <div className="mt-3 text-sm text-green-600">Command copied to clipboard</div>}
+            <div className="lg:border-l-2 lg:border-[#D3D3D3] lg:pl-8">
+              <div className="min-w-[300px] lg:min-w-[580px]">
+                <h2 className="text-xl font-bold mb-4">Sections</h2>
+                
+                <div className="space-y-4">
+                  {sections.map((section, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center justify-between px-6 py-5 rounded-lg border-2 border-black"
+                    >
+                      <span className="text-xl font-bold">{section}</span>
+                      <button
+                        onClick={() => deleteSection(index)}
+                        className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                      >
+                        <Trash2 className="w-6 h-6" />
+                      </button>
+                    </div>
+                  ))}
 
-            <p className="mt-4 text-xs text-slate-500">Note: This command requires you to have Node.js and npm installed locally. It will run a Builder CLI that imports or syncs content into your project space. I cannot run it from here; copy and run it in your terminal.</p>
-          </div>
-
-          <div className="bg-white border border-schedsync-gray-4 rounded-lg p-6">
-            <p className="text-sm text-slate-600">Placeholder for form components. Ask me to implement the form or specific fields (date, time, faculty, recurrence, etc.) and I will add them.</p>
+                  <button
+                    onClick={addSection}
+                    className="w-full flex items-center gap-4 px-6 py-5 rounded-lg border-2 border-[#8E8E93] text-[#8E8E93] hover:bg-gray-50 transition-colors"
+                  >
+                    <Plus className="w-6 h-6" strokeWidth={3} />
+                    <span className="text-xl">Add Selection</span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </main>
