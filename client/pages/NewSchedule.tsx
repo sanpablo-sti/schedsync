@@ -1,6 +1,6 @@
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Trash2, Plus } from "lucide-react";
 
