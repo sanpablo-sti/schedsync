@@ -9,18 +9,19 @@ export default function NewSchedule() {
   const [scheduleName, setScheduleName] = useState("");
   const [timeDuration, setTimeDuration] = useState("");
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
-  const [sections, setSections] = useState<string[]>(["Section 1", "Section 2"]);
+  const [sections, setSections] = useState<string[]>([
+    "Section 1",
+    "Section 2",
+  ]);
 
   const weekDays = [
     ["Monday", "Tuesday", "Wednesday"],
-    ["Thursday", "Friday", "Saturday", "Sunday"]
+    ["Thursday", "Friday", "Saturday", "Sunday"],
   ];
 
   const toggleDay = (day: string) => {
-    setSelectedDays(prev => 
-      prev.includes(day) 
-        ? prev.filter(d => d !== day)
-        : [...prev, day]
+    setSelectedDays((prev) =>
+      prev.includes(day) ? prev.filter((d) => d !== day) : [...prev, day],
     );
   };
 
@@ -40,9 +41,24 @@ export default function NewSchedule() {
 
       <main className="pt-8 pl-8 md:pl-32 pr-8 pb-8 flex-1">
         <div className="max-w-7xl mx-auto">
-          <Link to="/" className="inline-flex items-center gap-2 mb-8 text-black hover:opacity-70 transition-opacity">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M30 36L18 24L30 12" stroke="#1E1E1E" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 mb-8 text-black hover:opacity-70 transition-opacity"
+          >
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 48 48"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M30 36L18 24L30 12"
+                stroke="#1E1E1E"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </Link>
 
@@ -52,7 +68,9 @@ export default function NewSchedule() {
             <div className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-xl font-bold mb-3">Schedule Name</label>
+                  <label className="block text-xl font-bold mb-3">
+                    Schedule Name
+                  </label>
                   <input
                     type="text"
                     value={scheduleName}
@@ -63,7 +81,9 @@ export default function NewSchedule() {
                 </div>
 
                 <div>
-                  <label className="block text-xl font-bold mb-3">Time Duration</label>
+                  <label className="block text-xl font-bold mb-3">
+                    Time Duration
+                  </label>
                   <input
                     type="text"
                     value={timeDuration}
@@ -75,11 +95,13 @@ export default function NewSchedule() {
               </div>
 
               <div>
-                <h2 className="text-xl font-bold mb-4">Schedule Days Configuration</h2>
-                
+                <h2 className="text-xl font-bold mb-4">
+                  Schedule Days Configuration
+                </h2>
+
                 <div className="space-y-4">
                   {weekDays.map((row, rowIndex) => (
-                    <div 
+                    <div
                       key={rowIndex}
                       className="flex gap-0 rounded-lg border-2 border-black overflow-hidden"
                     >
@@ -88,11 +110,11 @@ export default function NewSchedule() {
                           key={day}
                           onClick={() => toggleDay(day)}
                           className={`flex-1 py-6 text-xl font-bold border-black transition-colors ${
-                            dayIndex !== 0 ? 'border-l-2' : ''
+                            dayIndex !== 0 ? "border-l-2" : ""
                           } ${
-                            selectedDays.includes(day) 
-                              ? 'bg-black text-white' 
-                              : 'bg-white text-black hover:bg-gray-100'
+                            selectedDays.includes(day)
+                              ? "bg-black text-white"
+                              : "bg-white text-black hover:bg-gray-100"
                           }`}
                         >
                           {day}
@@ -105,14 +127,16 @@ export default function NewSchedule() {
                 <div className="mt-6">
                   <h3 className="text-xl font-bold">School Days:</h3>
                   <p className="text-[#8E8E93]">
-                    {selectedDays.length > 0 ? selectedDays.join(", ") : "(Days Selected)"}
+                    {selectedDays.length > 0
+                      ? selectedDays.join(", ")
+                      : "(Days Selected)"}
                   </p>
                 </div>
               </div>
 
               <div className="flex justify-center pt-8">
                 <button
-                  onClick={() => navigate('/edit-schedule')}
+                  onClick={() => navigate("/edit-schedule")}
                   className="px-20 py-4 bg-[#D9D9D9] border border-black font-['Comic_Neue'] text-xl hover:bg-gray-300 transition-colors"
                 >
                   PROCEED
@@ -123,7 +147,7 @@ export default function NewSchedule() {
             <div className="lg:border-l-2 lg:border-[#D3D3D3] lg:pl-8">
               <div className="min-w-[300px] lg:min-w-[580px]">
                 <h2 className="text-xl font-bold mb-4">Sections</h2>
-                
+
                 <div className="space-y-4">
                   {sections.map((section, index) => (
                     <div

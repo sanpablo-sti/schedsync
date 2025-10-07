@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function EditSchedule() {
   const sectionButtons = Array(6).fill(null);
   const days = ["MON", "TUE", "WED", "THUR", "FRI"];
-  
+
   // Define sections with their respective time slots
   const scheduleData = [
     { section: "Section 1", slots: ["7:00", "8:00", "9:00", "10:00"] },
@@ -16,16 +16,28 @@ export default function EditSchedule() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Header />
-      
+
       <div className="flex flex-1 overflow-hidden">
         {/* Sidebar with circular section buttons */}
         <aside className="flex-shrink-0 w-[120px] border-r-2 border-black flex flex-col items-center pt-8 pb-8 relative">
-          <Link 
-            to="/new-schedule" 
+          <Link
+            to="/new-schedule"
             className="mb-6 hover:opacity-70 transition-opacity"
           >
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M30 36L18 24L30 12" stroke="#1E1E1E" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 48 48"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M30 36L18 24L30 12"
+                stroke="#1E1E1E"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </Link>
 
@@ -39,7 +51,7 @@ export default function EditSchedule() {
             ))}
           </div>
 
-          <button 
+          <button
             className="w-[45px] h-[45px] rounded-full border-2 border-black hover:bg-gray-100 transition-colors mt-4"
             aria-label="Add new section"
           />
@@ -50,10 +62,17 @@ export default function EditSchedule() {
           <div className="min-w-max">
             {/* Header Row */}
             <div className="sticky top-0 z-10 grid grid-cols-[180px_180px_repeat(5,180px)] bg-[#F2F2F7]">
-              <div className="border-2 border-[#E5E5EA] px-4 py-2 font-bold text-lg">SECTION</div>
-              <div className="border-2 border-[#E5E5EA] px-4 py-2 font-bold text-lg">TIME</div>
+              <div className="border-2 border-[#E5E5EA] px-4 py-2 font-bold text-lg">
+                SECTION
+              </div>
+              <div className="border-2 border-[#E5E5EA] px-4 py-2 font-bold text-lg">
+                TIME
+              </div>
               {days.map((day) => (
-                <div key={day} className="border-2 border-[#E5E5EA] px-4 py-2 font-bold text-lg">
+                <div
+                  key={day}
+                  className="border-2 border-[#E5E5EA] px-4 py-2 font-bold text-lg"
+                >
                   {day}
                 </div>
               ))}
@@ -61,7 +80,10 @@ export default function EditSchedule() {
 
             {/* Schedule rows */}
             {scheduleData.map((sectionData, sectionIdx) => (
-              <div key={sectionIdx} className="grid grid-cols-[180px_180px_repeat(5,180px)]">
+              <div
+                key={sectionIdx}
+                className="grid grid-cols-[180px_180px_repeat(5,180px)]"
+              >
                 {/* Section cell (spans multiple rows) */}
                 <div
                   className="border-2 border-[#E5E5EA] px-4 py-3 flex items-center justify-center font-medium"
